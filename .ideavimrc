@@ -41,6 +41,7 @@ nmap <leader>g <action>(Switcher)
 nmap <leader>g <action>(ActivateProjectToolWindow)
 
 " map <leader>f <Action>(GotoFile)
+" map <leader>c <Action>(GotoClass)
 " map <leader>g <Action>(FindInPath)
  
 " Execution
