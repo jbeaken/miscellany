@@ -1,0 +1,67 @@
+set number relativenumber
+set idearefactormode=keep
+set ideajoin
+set surround
+set easymotion
+
+let mapleader = " "
+
+noremap <Esc> <nop>
+nmap <S-Enter> O<Esc>
+nmap <CR> o<Esc>
+
+nnoremap <C-j> :m +1<CR>
+nnoremap <C-k> :m -2<CR>
+inoremap <C-j> <Esc>:m +1<CR>gi
+inoremap <C-k> <Esc>:m -2<CR>gi
+
+" system clipboard
+vmap <leader>y "+y
+vmap <leader>d "+d
+nmap <leader>y "+yy
+nmap <leader>p "+p
+nmap <leader>P "+P
+vmap <leader>p "+p
+vmap <leader>P "+P
+
+" scrolling
+" nmap <leader>d <C-d>
+" nmap <leader>u <C-u>
+" vmap <leader>d <C-d>
+" vmap <leader>u <C-u>
+
+" actions
+nmap <leader>h <action>(PreviousTab)
+nmap <leader>l <action>(NextTab)
+nmap <leader>bd <action>(CloseEditor)
+nmap <leader>g <action>(Generate)
+nmap <leader>/ <action>(ShowErrorDescription)
+nmap <leader>e <action>(GotoNextError)
+nmap <leader>g <action>(Switcher)
+nmap <leader>g <action>(ActivateProjectToolWindow)
+
+" map <leader>f <Action>(GotoFile)
+" map <leader>g <Action>(FindInPath)
+ 
+" Execution
+nmap <Leader>R <Action>(ChooseRunConfiguration)
+nmap <Leader>r <Action>(Run)
+nmap <Leader>D <Action>(ChooseDebugConfiguration)
+nmap <leader>d <Action>(Debug)
+
+nmap <Leader>i <Action>(GotoImplementation)
+map <Leader>f <Action>(FindUsages)
+map <Leader>F <Action>(HighlightUsagesInFile)
+map <Leader>w <Action>(HideAllWindows)
+map <Leader>W <Action>(JumpToLastWindow)
+map <Leader>rf <Action>(Refactorings.QuickListPopupAction)
+map <Leader>a <Action>(AnalyzeActionsPopup)
+map <Leader>n <Action>(ActivateProjectToolWindow)
+
+nnoremap <leader><leader> <C-Tab>
+
+
+set NERDTree
+let g:NERDTreeMapActivateNode='l'
+let g:NERDTreeMapJumpParent='h'
+
