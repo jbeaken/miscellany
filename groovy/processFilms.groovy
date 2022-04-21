@@ -23,11 +23,8 @@ try (Stream<Path> stream = Files.list(Paths.get(dir))) {
 }
 
 filenames.each { film ->
-    println "Directory to create " + film[1]
 
-    Path directoryToCreate = Paths.of(dir, film[1])
-
-    Path directoryToCreate = Paths.of(dir, film[1])    
+    Path directoryToCreate = Path.of(dir, film[1])    
 
     println "Directory to create : ${directoryToCreate}"
 
