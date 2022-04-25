@@ -25,11 +25,12 @@ try (Stream<Path> stream = Files.list(Paths.get(dir))) {
 filenames.each { film ->
 
     Path directoryToCreate = Path.of(dir, film[1])    
+    Path directoryToCreate = Path.of(dir, film[1])    
 
     println "Directory to create : ${directoryToCreate}"
 
-    // Files.createDirectory( Paths.of(dir, film[1]) )
+    Files.createDirectory( directoryToCreate )
 
-    // Files.move( Paths.get(dir, film[0]) , Paths.get(dir, film[1], film[0]))
+    Files.move( Paths.get(dir, film[0]) , Paths.get(dir, film[1], film[0]))
 }
 
