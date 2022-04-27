@@ -25,9 +25,12 @@ try (Stream<Path> stream = Files.list(Paths.get(dir))) {
 filenames.each { film ->
 
     Path directoryToCreate = Path.of(dir, film[1])    
-    Path directoryToCreate = Path.of(dir, film[1])    
+    Path fileSource = Path.of(dir, film[0])
+    Path fileDestination = Path.of(dir, film[1], film[0])       
 
     println "Directory to create : ${directoryToCreate}"
+    println "fileSource : ${fileSource}"
+    println "fileDestination : ${fileDestination}"
 
     Files.createDirectory( directoryToCreate )
 
