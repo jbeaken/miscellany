@@ -3,11 +3,15 @@ import spock.lang.Specification
 class HelloSpockSpec extends Specification {
 
 
-  def "length of Spock's and his friends' names"() {
+  def "run move single movie files into own directories"() {
     given:
-    File resource = HelloSpockSpec.class.getResource("org/mzuri/media/processFilms.groovy").asFile()
+    File file1 = new File(HelloSpockSpec.class.getResource("processFilms.groovy").toURI())
+
     GroovyShell groovyShell = new GroovyShell()
-    groovyShell.parse(resource)
+
+    def script = groovyShell.parse(file1)
+
+    script.run()
 
 
   }
