@@ -9,7 +9,6 @@ import java.nio.file.FileSystem
 class MoveFilmsSpec extends Specification {
 
   FileSystem fileSystem
-  GroovyShell groovyShell = new GroovyShell()
 
   def setup() {
     fileSystem = Jimfs.newFileSystem(Configuration.unix());
@@ -34,6 +33,7 @@ class MoveFilmsSpec extends Specification {
   def "run move single movie files into own directories"() {
     given: "script is loads"
     File processFilmsScript = new File(MoveFilmsSpec.class.getResource("processFilms.groovy").toURI())
+    GroovyShell groovyShell = new GroovyShell()
     def script = groovyShell.parse(processFilmsScript)
 
     and: "film path is mocked"
