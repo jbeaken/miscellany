@@ -1,5 +1,5 @@
 ###############################################################################
-# i3-gaps config file for the Regolith Desktop Environment
+# i3-gaps config file for the Regolith Desktop Environment test
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 #
@@ -7,7 +7,7 @@
 #
 # In this config file many values are taken from Xresources with the directive
 # set_from_resource:
-#
+#adsfd
 # set_from_resource <i3 variable name> <Xresources key> <default value>
 #
 # This configuration file utilizes Xresource variables to change configuration
