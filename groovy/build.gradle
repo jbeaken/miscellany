@@ -1,23 +1,22 @@
 apply plugin: "groovy"
 
 version = "1.0"
-description = "Spock Framework - Example Project"
+description = "Spock Framework - Script Project"
 
-// Spock works with Java 1.8 and above
-sourceCompatibility = 1.8
+sourceCompatibility = 11
 
 repositories {
-  // Spock releases are available from Maven Central
   mavenCentral()
 }
 
 dependencies {
-  // mandatory dependencies for using Spock
   implementation 'org.apache.groovy:groovy:4.0.3'
 
   testImplementation platform('org.spockframework:spock-bom:2.2-M1-groovy-4.0')
-
   testImplementation "org.spockframework:spock-core"
+
+  //in memory file system
+  testImplementation 'com.google.jimfs:jimfs:1.2'
 
   // optional dependencies for using Spock
   testImplementation "org.hamcrest:hamcrest-core:2.2"   // only necessary if Hamcrest matchers are used
