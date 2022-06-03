@@ -47,6 +47,10 @@ class MoveFilmsSpec extends Specification {
     Files.isDirectory( filmPath.resolve("film4" )) == true
 
     and:
+    Files.isDirectory( filmPath.resolve("film1" )) == true
+    Files.isDirectory( filmPath.resolve("film2" )) == true
+
+    and:
     Files.exists( filmPath.resolve("film3" ).resolve("film3.mp4")) == true
     Files.exists( filmPath.resolve("film4" ).resolve("film4.mkv")) == true
 
