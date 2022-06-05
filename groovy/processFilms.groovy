@@ -25,8 +25,8 @@ try (Stream<Path> stream = Files.list(Paths.get(dir))) {
 filenames.each { film ->
     println "Directory to create " + film[1]
 
-    Files.createDirectory( Paths.get(dir, film[1]) )
+    Files.createDirectory( Paths.of(dir, film[1]) )
 
-         Files.move( Paths.get(dir, film[0]) , Paths.get(dir, film[1], film[0]))
+    Files.move( Paths.get(dir, film[0]) , Paths.get(dir, film[1], film[0]))
 }
 
