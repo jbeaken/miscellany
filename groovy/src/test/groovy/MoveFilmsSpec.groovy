@@ -43,15 +43,16 @@ class MoveFilmsSpec extends Specification {
     script.moveSingleFilmsToDirectories(filmPath)
 
     expect:
-    Files.isDirectory( Path.of("/media/films/film3" )) == true
-    Files.isDirectory( Path.of("/media/films/film4" )) == true
+    Files.isDirectory( filmPath.resolve("film3" )) == true
+    Files.isDirectory( filmPath.resolve("film4" )) == true
 
     and:
-    Files.exists( Path.of("/media/films/film3/film3.mp4" )) == true
-    Files.exists( Path.of("/media/films/film4/film4.mkv" )) == true
+    Files.exists( filmPath.resolve("film3" ).resolve("film3.mp4")) == true
+    Files.exists( filmPath.resolve("film4" ).resolve("film4.mkv")) == true
 
-    Files.exists( Path.of("/media/films/film3.mp4" )) == false
-    Files.exists( Path.of("/media/films/film4.mkv" )) == false
+    and:
+    Files.exists( filmPath.resolve("film3.mp4")) == false
+    Files.exists( filmPath.resolve("film4.mkv")) == false
 
   }
 }  
