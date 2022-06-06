@@ -9,29 +9,29 @@ import java.util.stream.Stream
 
 class MoveFilmsSpec extends Specification {
 
+  FileSystem fs
+
   def setup() {
     // For a simple file system with Unix-style paths and behavior:
-    FileSystem fs = Jimfs.newFileSystem(Configuration.unix());
+    fs = Jimfs.newFileSystem(Configuration.unix());
 
-    Path foo = fs.getPath("/blah");
-    Files.createDirectory(foo);
+    Path mediaPath = fs.getPath("/media/");
+    Path filmsPath = fs.getPath("/media/films");
 
-//    Path foo = fs.getPath("/media/ext/Films/test");
-//    Files.createDirectory(Path.of("/media"));
-//    Files.createDirectory(Path.of("/media/ext"));
-//    Files.createDirectory(Path.of("/media/ext/Films"));
+    Files.createDirectory(mediaPath);
+    Files.createDirectory(filmsPath);
   }
 
   def "run move single movie files into own directories"() {
-    given:
+    given: "script is loads"
     File file1 = new File(MoveFilmsSpec.class.getResource("processFilms.groovy").toURI())
-
-    Path filmPath = Path.of("/media/ext/Films")
-
     GroovyShell groovyShell = new GroovyShell()
-
     def script = groovyShell.parse(file1)
 
+    and: "film path is mocked"
+    Path filmPath =  fs.getPath("/media/films")
+
+    and: "run script"
     script.moveSingleFilmsToDirectories(filmPath)
   }
 
