@@ -53,6 +53,5 @@ class MoveFilmsSpec extends Specification {
     and:
     Files.exists( filmPath.resolve("film3.mp4")) == false
     Files.exists( filmPath.resolve("film4.mkv")) == false
-
   }
 }  
