@@ -36,8 +36,8 @@ def moveSingleFilmsToDirectories(Path filmsPath) {
         println "fileSource : ${fileSource}"
         println "fileDestination : ${fileDestination}"
 
-//    Files.createDirectory( directoryToCreate )
-//    Files.move( Paths.get(dir, film[0]) , Paths.get(dir, film[1], film[0]))
+        Files.createDirectory( directoryToCreate )
+        Files.move( Paths.get(dir, film[0]) , Paths.get(dir, film[1], film[0]))
     }
 }
 
