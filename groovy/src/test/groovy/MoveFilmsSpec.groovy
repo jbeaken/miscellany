@@ -5,47 +5,53 @@ import spock.lang.Specification
 import java.nio.file.Files
 import java.nio.file.Path
 import java.nio.file.FileSystem
-import java.util.stream.Stream
 
 class MoveFilmsSpec extends Specification {
 
-  FileSystem fs
+  FileSystem fileSystem
+  GroovyShell groovyShell = new GroovyShell()
 
   def setup() {
-    // For a simple file system with Unix-style paths and behavior:
-    fs = Jimfs.newFileSystem(Configuration.unix());
+    fileSystem = Jimfs.newFileSystem(Configuration.unix());
 
-    Path mediaPath = fs.getPath("/media/");
-    Path filmsPath = fs.getPath("/media/films");
+    Path mediaPath = fileSystem.getPath("/media/");
+    Path filmsPath = fileSystem.getPath("/media/films");
+    Path film1Path = fileSystem.getPath("/media/films/film1");
+    Path film2Path = fileSystem.getPath("/media/films/film2");
+
+    Path film3Path = fileSystem.getPath("/media/films/film3.mp4");
+    Path film4Path = fileSystem.getPath("/media/films/film4.mkv");
 
     Files.createDirectory(mediaPath);
     Files.createDirectory(filmsPath);
+    Files.createDirectory(film1Path);
+    Files.createDirectory(film2Path);
+
+    Files.createFile(film3Path);
+    Files.createFile(film4Path);
   }
 
   def "run move single movie files into own directories"() {
     given: "script is loads"
-    File file1 = new File(MoveFilmsSpec.class.getResource("processFilms.groovy").toURI())
-    GroovyShell groovyShell = new GroovyShell()
-    def script = groovyShell.parse(file1)
+    File processFilmsScript = new File(MoveFilmsSpec.class.getResource("processFilms.groovy").toURI())
+    def script = groovyShell.parse(processFilmsScript)
 
     and: "film path is mocked"
-    Path filmPath =  fs.getPath("/media/films")
+    Path filmPath =  fileSystem.getPath("/media/films")
 
     and: "run script"
     script.moveSingleFilmsToDirectories(filmPath)
-  }
-
-  def "Should create a file on a file system"() {
-    given:
-
-    FileSystem fileSystem = Jimfs.newFileSystem(Configuration.unix());
-    String fileName = "newFile.txt";
-    Path pathToStore = fileSystem.getPath("");
-    Path filePath = pathToStore.resolve(fileName);
-    Files.createFile(filePath);
 
     expect:
-    Files.exists( pathToStore.resolve(fileName) ) == true
-    Files.exists( Path.of("/blah" )) == true
+    Files.isDirectory( Path.of("/media/films/film3" )) == true
+    Files.isDirectory( Path.of("/media/films/film4" )) == true
+
+    and:
+    Files.exists( Path.of("/media/films/film3/film3.mp4" )) == true
+    Files.exists( Path.of("/media/films/film4/film4.mkv" )) == true
+
+    Files.exists( Path.of("/media/films/film3.mp4" )) == false
+    Files.exists( Path.of("/media/films/film4.mkv" )) == false
+
   }
 }  

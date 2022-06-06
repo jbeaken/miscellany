@@ -28,16 +28,15 @@ def moveSingleFilmsToDirectories(Path filmsPath) {
 
     filenames.each { film ->
 
-        Path directoryToCreate = Path.of(dir, film[1])
-        Path fileSource = Path.of(dir, film[0])
-        Path fileDestination = Path.of(dir, film[1], film[0])
+        Path directoryToCreate = filmsPath.resolve(film[1])
+        Path fileSource = filmsPath.resolve(film[0])
+        Path fileDestination = filmsPath.resolve(film[1]).resolve(film[0])
 
         println "Directory to create : ${directoryToCreate}"
         println "fileSource : ${fileSource}"
         println "fileDestination : ${fileDestination}"
 
 //    Files.createDirectory( directoryToCreate )
-//
 //    Files.move( Paths.get(dir, film[0]) , Paths.get(dir, film[1], film[0]))
     }
 }
