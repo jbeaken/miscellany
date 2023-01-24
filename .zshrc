@@ -114,6 +114,7 @@ alias o=xdg-open
 alias sv="sudo vim"
 alias k="kubectl"
 alias kc="kubectl config"
+alias ke="kubectl config"
 alias dnsutils='kubectl run --rm utils -it --image arunvelsriram/utils bash'
 
 alias pbcopy='xclip -selection clipboard'
