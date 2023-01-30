@@ -107,7 +107,6 @@ zstyle ':completion:*' menu select
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias g=google
-alias mk="minikube"
 alias gr=gradle
 alias ok=okular
 alias o=xdg-open
